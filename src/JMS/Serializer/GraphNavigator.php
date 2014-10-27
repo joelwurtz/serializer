@@ -137,6 +137,10 @@ final class GraphNavigator
                 throw new RuntimeException($msg);
 
             default:
+                if ($context instanceof SerializationContext) {
+                    $type['name'] = get_class($data);
+                }
+
                 // TODO: The rest of this method needs some refactoring.
                 if ($context instanceof SerializationContext) {
                     if (null !== $data) {
